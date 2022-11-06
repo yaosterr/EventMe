@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/yaoer/AndroidStudioProjects/EventMe/app/src/main/res/drawable/border.xml" value="0.2845" />
+        <entry key="..\:/Users/yaoer/AndroidStudioProjects/EventMe/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
         <entry key="..\:/Users/yaoer/AndroidStudioProjects/EventMe/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/yaoer/AndroidStudioProjects/EventMe/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/yaoer/AndroidStudioProjects/EventMe/app/src/main/res/xml/network_security_config.xml" value="0.18541666666666667" />
       </map>
     </option>
   </component>

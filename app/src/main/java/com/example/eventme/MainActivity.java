@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("EventMe");
 
         //Login Activity
-        /*Button buttonLogin = findViewById(R.id.button_login);
+        Button buttonLogin = findViewById(R.id.button_login);
         buttonLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v)
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         //Register Activity
         Button buttonRegister = findViewById(R.id.button_register);
