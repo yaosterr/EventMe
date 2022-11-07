@@ -77,10 +77,12 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Login.this, UserProfile.class));
 
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
-                    if (firebaseUser.isEmailVerified()) {
+                    /*if (firebaseUser.isEmailVerified()) {
                         Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Login.this, UserProfile.class));
                         finish();
@@ -88,7 +90,7 @@ public class Login extends AppCompatActivity {
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut();
                         showAlertDialog();
-                    }
+                    }*/
 
                 } else {
                     try {

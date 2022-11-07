@@ -18,9 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView_logo"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
             app:srcCompat="@drawable/ic_logo"
-            android:maxWidth="180dp"
+            android:maxWidth="300dp"
             android:adjustViewBounds="true"
             android:layout_centerHorizontal="true"
             />
@@ -32,6 +32,7 @@
             android:layout_below="@id/imageView_logo"
             android:layout_marginTop="30dp"
             android:text="Welcome to EventMe!"
+            android:fontFamily="sans-serif-black"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_login"
             android:text="Login"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="160dp"
             android:layout_below="@id/textView_main_head"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp" />
@@ -51,8 +52,10 @@
             android:id="@+id/button_register"
             android:text="Register"
             android:layout_below="@id/button_login"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="70dp"
-            android:layout_marginRight="70dp" />
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="210dp"/>
 
     </RelativeLayout>
 
