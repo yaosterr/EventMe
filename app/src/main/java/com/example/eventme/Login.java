@@ -1,8 +1,11 @@
 package com.example.eventme;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,8 +22,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private EditText editTextLoginEmail, editTextLoginPWD;
     private ProgressBar progressBar;
@@ -48,15 +52,15 @@ public class LoginActivity extends AppCompatActivity {
                 String textPWD = editTextLoginPWD.getText().toString();
 
                 if (TextUtils.isEmpty(textEmail)) {
-                    Toast.makeText(LoginActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Please enter your email", Toast.LENGTH_SHORT).show();
                     editTextLoginEmail.setError("Email is required");
                     editTextLoginEmail.requestFocus();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
-                    Toast.makeText(LoginActivity.this, "Please re-enter your email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Please re-enter your email", Toast.LENGTH_SHORT).show();
                     editTextLoginEmail.setError("Valid email is required");
                     editTextLoginEmail.requestFocus();
                 } else if (TextUtils.isEmpty(textPWD)) {
-                    Toast.makeText(LoginActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Please enter your password", Toast.LENGTH_SHORT).show();
                     editTextLoginPWD.setError("Password is required");
                     editTextLoginPWD.requestFocus();
                 } else {
@@ -68,11 +72,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String textEmail, String textPWD) {
-        authProfile.signInWithEmailAndPassword(textEmail, textPWD).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+        authProfile.signInWithEmailAndPassword(textEmail, textPWD).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
+
+                    FirebaseUser firebaseUser = authProfile.getCurrentUser();
+
+                    if (firebaseUser.isEmailVerified()) {
+                        Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Login.this, UserProfile.class));
+                        finish();
+                    } else {
+                        firebaseUser.sendEmailVerification();
+                        authProfile.signOut();
+                        showAlertDialog();
+                    }
+
                 } else {
                     try {
                         throw task.getException();
@@ -84,13 +101,45 @@ public class LoginActivity extends AppCompatActivity {
                         editTextLoginEmail.requestFocus();
                     } catch (Exception e) {
                         Log.e(TAG, e.getMessage());
-                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-
-                    Toast.makeText(LoginActivity.this, "An error has occured", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "An error has occured", Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+        builder.setTitle("Email is not verified");
+        builder.setMessage("Please verify your email to continue.");
+
+        builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (authProfile.getCurrentUser() != null) {
+            Toast.makeText(Login.this, "Already logged in", Toast.LENGTH_SHORT).show();
+
+            //code for userprofileactivity
+            startActivity(new Intent(Login.this, UserProfile.class));
+            finish();
+        } else {
+            Toast.makeText(Login.this, "You can login now", Toast.LENGTH_SHORT).show();
+        }
     }
 }
