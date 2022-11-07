@@ -15,7 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="#5cc09f">
+            android:background="#FF6200DE">
 
             <ImageView
                 android:layout_width="150dp"
@@ -115,13 +115,14 @@
                 android:layout_below="@id/divider_email"
                 android:textSize="18sp"/>
 
+            <!--
             <View
+                android:id="@+id/divider_dob"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/textView_show_dob"
-                android:background="@android:color/darker_gray"
-                android:id="@+id/divider_dob"/>
+                android:layout_marginTop="20dp"
+                android:background="@android:color/darker_gray" />-->
 
             <ProgressBar
                 android:layout_width="wrap_content"

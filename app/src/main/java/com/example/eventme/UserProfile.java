@@ -127,19 +127,8 @@ public class UserProfile extends AppCompatActivity {
             startActivity(getIntent());
             finish();
             overridePendingTransition(0,0);
-        } /*else if (id == R.id.menu_update_profile) {
-            Intent intent = new Intent (UserProfile.this, UpdateProfileActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.menu_update_email) {
-            Intent intent = new Intent (UserProfile.this, UpdateEmailActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.menu_settings) {
-            Toast.makeText(UserProfile.this, "menu_settings", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.menu_change_password) {
-            Intent intent = new Intent (UserProfile.this, ChangePasswordActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.menu_delete_profile) {
-            Intent intent = new Intent (UserProfile.this, DeleteProfileActivity.class);
+        } /*else if (id == R.id.menu_map_view) {
+            Intent intent = new Intent (UserProfile.this, Map.class);
             startActivity(intent);
         } */else if (id == R.id.menu_logout) {
             authProfile.signOut();
