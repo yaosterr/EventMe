@@ -2,8 +2,11 @@ package com.example.eventme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,8 +16,13 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.*;
 
 public class EventBox extends AppCompatActivity {
+
+    ArrayList<Event> total = new ArrayList<Event>();
+
     String eventList[] = {"Cava Giveaway", "Nut Party", "Best Friend Party", "Adele Birthday Party", "Harvard How-tos", "Nice Greetings", "Physics Class", "Elon Musk Talk Show",  "Dinner With Lebron James", "Life of Pi Reading", "Temper Control", "Christmas Celebration", "Justin Bieber Meet and Greet", "Self Defense Class", "Love Yourself Readings", "Casper Party", "Standup Comedy", "Kevin Hart Party", "Bill Nye Exhibition", "Fire Exhibition"};
     String locationList[] = {"CAVA, Parking lot, South Hoover Street Suite 1840, Los Angeles, CA", "2809 Ellendale Place, Los Angeles, CA", "Insomnia Cookies, West Jefferson Boulevard, Los Angeles, CA", "1324 West 37th Place, Los Angeles, CA", "1261 W 36th Pl, Los Angeles, CA", "1259 W 36th Pl, Los Angeles, CA", "1261 W 36th Pl, Los Angeles, CA","1260 W 36th Pl, Los Angeles, CA","1263 W 36th Pl, Los Angeles, CA","1265 W 36th Pl, Los Angeles, CA", "CAVA, Parking lot, South Hoover Street Suite 1840, Los Angeles, CA", "2809 Ellendale Place, Los Angeles, CA", "Insomnia Cookies, West Jefferson Boulevard, Los Angeles, CA", "1324 West 37th Place, Los Angeles, CA", "1261 W 36th Pl, Los Angeles, CA", "1259 W 36th Pl, Los Angeles, CA", "1261 W 36th Pl, Los Angeles, CA","1260 W 36th Pl, Los Angeles, CA","1263 W 36th Pl, Los Angeles, CA","1265 W 36th Pl, Los Angeles, CA", "CAVA, Parking lot, South Hoover Street Suite 1840, Los Angeles, CA", "2809 Ellendale Place, Los Angeles, CA", "Insomnia Cookies, West Jefferson Boulevard, Los Angeles, CA", "1324 West 37th Place, Los Angeles, CA", "1261 W 36th Pl, Los Angeles, CA", "1259 W 36th Pl, Los Angeles, CA", "1261 W 36th Pl, Los Angeles, CA","1260 W 36th Pl, Los Angeles, CA","1263 W 36th Pl, Los Angeles, CA","1265 W 36th Pl, Los Angeles, CA"};
     String dateTimeList[] = {"9:30PM, 11/01/2022", "9:10PM, 11/03/2022", "7:00PM, 10/06/2022", "11:00PM, 11/15/2022", "9:30PM, 11/20/2022","9:35PM, 12/20/2022","10:00AM, 11/20/2022","7:15AM, 12/02/2022","7:30PM, 11/20/2022","10:30PM, 11/20/2022", "9:30PM, 11/01/2022", "9:10PM, 11/03/2022", "7:00PM, 10/06/2022", "11:00PM, 11/15/2022", "9:30PM, 11/20/2022","9:35PM, 12/20/2022","10:00AM, 11/20/2022","7:15AM, 12/02/2022","7:30PM, 11/20/2022","10:30PM, 11/20/2022"};
@@ -61,11 +69,18 @@ public class EventBox extends AppCompatActivity {
             TextView dateAndTimeView = new TextView(this);
             TextView organizationView = new TextView(this);
             Button register = new Button(this);
+            int finalI = i;
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(EventBox.this, "You have signed up. See you then!",
                             Toast.LENGTH_LONG).show();
+                    Event temp = new Event(eventList[finalI], locationList[finalI], dateTimeList[finalI],organizationList[finalI]);
+                    total.add(temp);
+                    Intent minor = new Intent(EventBox.this, PersonalVoice.class);
+//                    Intent minor = new Intent(view.getContext(), PersonalVoice.class);
+                    minor.putExtra("msg", total);
+                    startActivity(minor);
                 }
             });
 

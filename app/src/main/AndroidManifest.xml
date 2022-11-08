@@ -17,10 +17,14 @@
         android:theme="@style/Theme.EventMe"
         android:usesCleartextTraffic="true"
         tools:targetApi="30">
+        <activity
+            android:name=".PersonalVoice"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC1dNGmu9mLCkkJi5oWtjMU2j1C3FwEBxc">
-        </meta-data>
+            android:value="AIzaSyC1dNGmu9mLCkkJi5oWtjMU2j1C3FwEBxc"></meta-data>
+
         <activity
             android:name=".UserProfile"
             android:exported="false" />
@@ -32,7 +36,10 @@
             android:exported="false" />
         <activity
             android:name=".EventBox"
-            android:exported="false"/>
+            android:exported="false" />
+        <activity
+            android:name=".PersonalEvents"
+            android:exported="false" />
         <activity
             android:name=".Map"
             android:exported="false" />
