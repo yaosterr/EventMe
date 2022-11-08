@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
 
-    private TextView textViewWelcome, textViewFullName, textViewEmail, textViewDOB, textViewGender, textViewMobile;
+    private TextView textViewWelcome, textViewFullName, textViewEmail, textViewDOB;
     private ProgressBar progressBar;
     private String fullName, email, DOB;
     private ImageView imageView;
