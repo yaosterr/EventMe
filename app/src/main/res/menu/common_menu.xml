@@ -12,6 +12,9 @@
     <item android:title="Map View"
         android:id="@+id/menu_map_view"/>
 
+    <item android:title="Events"
+        android:id="@+id/menu_events"/>
+
     <item android:title="Logout"
         android:id="@+id/menu_logout"/>
 </menu>

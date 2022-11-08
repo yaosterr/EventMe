@@ -128,7 +128,10 @@ public class UserProfile extends AppCompatActivity {
             finish();
             overridePendingTransition(0, 0);
         } else if (id == R.id.menu_map_view) {
-            Intent intent = new Intent (UserProfile.this, Map.class);
+            Intent intent = new Intent(UserProfile.this, Map.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_events) {
+            Intent intent = new Intent(UserProfile.this, EventBox.class);
             startActivity(intent);
         } else if (id == R.id.menu_logout) {
             authProfile.signOut();
