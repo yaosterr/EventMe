@@ -22,11 +22,32 @@ import java.util.*;
 public class PersonalVoice extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("clicked", "newregister");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_voice);
         Intent intent = getIntent();
         ArrayList<Event> tempEvent = (ArrayList<Event>)intent.getSerializableExtra("msg");
+
+        LinearLayout parent1 = new LinearLayout(this);
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        params1.height = 150;
+        parent1.setOrientation(LinearLayout.VERTICAL);
+        parent1.setLayoutParams(params1);
+
+        TextView titleView = new TextView(this);
+        LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        titleParams.height = 150;
+        titleView.setLayoutParams(titleParams);
+
+        String title = "Registered Events";
+        titleView.setText(title);
+        titleView.setTextColor(Color.BLUE);
+        titleView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        titleView.setTextSize(40);
+
+        parent1.addView(titleView);
+
+        LinearLayout layout1 = (LinearLayout) findViewById(R.id.personalLayout1);
+        layout1.addView(parent1);
 
 
         if (tempEvent != null){

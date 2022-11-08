@@ -38,9 +38,6 @@
             android:name=".EventBox"
             android:exported="false" />
         <activity
-            android:name=".PersonalEvents"
-            android:exported="false" />
-        <activity
             android:name=".Map"
             android:exported="false" />
         <activity
