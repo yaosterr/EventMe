@@ -68,9 +68,9 @@ public class EventGuest extends AppCompatActivity {
             TextView locationView = new TextView(this);
             TextView dateAndTimeView = new TextView(this);
             TextView organizationView = new TextView(this);
-            Button register = new Button(this);
+            //Button register = new Button(this);
             int finalI = i;
-            register.setOnClickListener(new View.OnClickListener() {
+            /*register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(EventGuest.this, "You have signed up. See you then!",
@@ -82,7 +82,7 @@ public class EventGuest extends AppCompatActivity {
                     minor.putExtra("msg", total);
                     startActivity(minor);
                 }
-            });
+            });*/
 
             LinearLayout.LayoutParams eventNameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
             eventNameParams.height = 100;
@@ -94,13 +94,13 @@ public class EventGuest extends AppCompatActivity {
             locationView.setLayoutParams(viewParams);
             dateAndTimeView.setLayoutParams(viewParams);
             organizationView.setLayoutParams(viewParams);
-            register.setLayoutParams(buttonParams);
+            //register.setLayoutParams(buttonParams);
 
             String eventName = eventList[i];
             String location = locationList[i];
             String dateTime = dateTimeList[i];
             String organization = organizationList[i];
-            String buttonText = "Register";
+            //String buttonText = "Register";
 
             eventNameView.setText(eventName);
             eventNameView.setTextColor(Color.BLACK);
@@ -109,13 +109,13 @@ public class EventGuest extends AppCompatActivity {
             locationView.setText(location);
             dateAndTimeView.setText(dateTime);
             organizationView.setText(organization);
-            register.setText(buttonText);
+            //register.setText(buttonText);
 
             parent.addView(eventNameView);
             parent.addView(locationView);
             parent.addView(dateAndTimeView);
             parent.addView(organizationView);
-            parent.addView(register);
+            //parent.addView(register);
 
             LinearLayout layout = (LinearLayout) findViewById(R.id.eventboxlayout);
             layout.addView(parent);
