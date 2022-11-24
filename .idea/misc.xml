@@ -14,10 +14,14 @@
         <entry key="app/src/main/res/drawable/border.xml" value="0.2745" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2745" />
         <entry key="app/src/main/res/layout/activity_event_alphabetical.xml" value="0.28804347826086957" />
+        <entry key="app/src/main/res/layout/activity_event_alphabetical2.xml" value="0.28804347826086957" />
         <entry key="app/src/main/res/layout/activity_event_box.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_event_cost.xml" value="0.28804347826086957" />
+        <entry key="app/src/main/res/layout/activity_event_cost2.xml" value="0.28804347826086957" />
+        <entry key="app/src/main/res/layout/activity_event_date.xml" value="0.28804347826086957" />
         <entry key="app/src/main/res/layout/activity_event_date_guest.xml" value="0.28804347826086957" />
         <entry key="app/src/main/res/layout/activity_event_distance.xml" value="0.28804347826086957" />
+        <entry key="app/src/main/res/layout/activity_event_distance2.xml" value="0.28804347826086957" />
         <entry key="app/src/main/res/layout/activity_event_guest.xml" value="0.28804347826086957" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35885416666666664" />
