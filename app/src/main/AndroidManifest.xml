@@ -18,6 +18,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="30">
         <activity
+            android:name=".EventDateGuest"
+            android:exported="false" />
+        <activity
+            android:name=".EventCostGuest"
+            android:exported="false" />
+        <activity
+            android:name=".EventDistanceGuest"
+            android:exported="false" />
+        <activity
+            android:name=".EventAlphabeticalGuest"
+            android:exported="false" />
+        <activity
             android:name=".EventGuest"
             android:exported="false" />
         <activity

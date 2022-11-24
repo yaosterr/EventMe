@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Refresh"
+        android:icon="@drawable/ic_refresh_white"
+        android:alphabeticShortcut="r"
+        android:orderInCategory="1"
+        android:id="@+id/menu_refresh"
+        app:showAsAction="ifRoom" />
+
+    <item android:title="Alphabetical"
+        android:id="@+id/menu_alphabetical"/>
+
+    <item android:title="Date"
+        android:id="@+id/menu_date"/>
+
+    <item android:title="Distance"
+        android:id="@+id/menu_distance"/>
+
+    <item android:title="Cost"
+        android:id="@+id/menu_cost"/>
+</menu>
