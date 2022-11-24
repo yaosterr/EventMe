@@ -37,7 +37,18 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(intent);
         }
-    });
+        });
+
+        //Guest Activity
+        Button buttonGuest = findViewById(R.id.button_guest);
+        buttonGuest.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v)
+            {
+                Intent intent = new Intent(MainActivity.this, EventGuest.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
