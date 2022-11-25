@@ -35,14 +35,14 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoggingOutTest {
+public class ReloginTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void mainActivityTest() {
+    public void reloginTest() {
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.button_login), withText("Login"),
                         childAtPosition(
@@ -124,11 +124,63 @@ public class LoggingOutTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ViewInteraction imageView = onView(
-                allOf(withId(R.id.imageView_logo),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.button_login), withText("Login"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                2)));
+        materialButton3.perform(scrollTo(), click());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.editText_login_email),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                2)));
+        appCompatEditText3.perform(scrollTo(), replaceText("emyao@usc.edu"), closeSoftKeyboard());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ViewInteraction appCompatEditText4 = onView(
+                allOf(withId(R.id.editText_login_pwd),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                4)));
+        appCompatEditText4.perform(scrollTo(), replaceText("123456"), closeSoftKeyboard());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ViewInteraction materialButton4 = onView(
+                allOf(withId(R.id.button_login), withText("Login"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                5)));
+        materialButton4.perform(scrollTo(), click());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.textView_show_welcome), withText("Welcome, Eric Yao!"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
                         isDisplayed()));
-        imageView.check(matches(isDisplayed()));
+        textView.check(matches(withText("Welcome, Eric Yao!")));
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

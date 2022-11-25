@@ -4,8 +4,11 @@ package com.example.eventme;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
@@ -37,22 +40,29 @@ public class GuestTest {
     @Test
     public void guestTest() {
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.button_login), withText("Login"),
+                allOf(withId(R.id.button_guest), withText("Guest"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
-                                2)));
+                                4)));
         materialButton.perform(scrollTo(), click());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.button_login), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                5)));
-        materialButton2.perform(scrollTo(), click());
+        ViewInteraction textView = onView(
+                allOf(withText("Event Box"),
+                        withParent(withParent(withId(R.id.eventboxlayout))),
+                        isDisplayed()));
+        textView.check(matches(withText("Event Box")));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private static Matcher<View> childAtPosition(
