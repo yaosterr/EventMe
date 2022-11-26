@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.*;
 
-public class EventBox extends AppCompatActivity {
+public class EventGuest extends AppCompatActivity {
 
     ArrayList<Event> total = new ArrayList<Event>();
 
@@ -71,21 +71,21 @@ public class EventBox extends AppCompatActivity {
             TextView locationView = new TextView(this);
             TextView dateAndTimeView = new TextView(this);
             TextView organizationView = new TextView(this);
-            Button register = new Button(this);
+            //Button register = new Button(this);
             int finalI = i;
-            register.setOnClickListener(new View.OnClickListener() {
+            /*register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(EventBox.this, "You have signed up. See you then!",
+                    Toast.makeText(EventGuest.this, "You have signed up. See you then!",
                             Toast.LENGTH_LONG).show();
                     Event temp = new Event(eventList[finalI], locationList[finalI], dateTimeList[finalI],organizationList[finalI]);
                     total.add(temp);
-                    Intent minor = new Intent(EventBox.this, PersonalVoice.class);
+                    Intent minor = new Intent(EventGuest.this, PersonalVoice.class);
 //                    Intent minor = new Intent(view.getContext(), PersonalVoice.class);
                     minor.putExtra("msg", total);
                     startActivity(minor);
                 }
-            });
+            });*/
 
             LinearLayout.LayoutParams eventNameParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
             eventNameParams.height = 100;
@@ -97,13 +97,13 @@ public class EventBox extends AppCompatActivity {
             locationView.setLayoutParams(viewParams);
             dateAndTimeView.setLayoutParams(viewParams);
             organizationView.setLayoutParams(viewParams);
-            register.setLayoutParams(buttonParams);
+            //register.setLayoutParams(buttonParams);
 
             String eventName = eventList[i];
             String location = locationList[i];
             String dateTime = dateTimeList[i];
             String organization = organizationList[i];
-            String buttonText = "Register";
+            //String buttonText = "Register";
 
             eventNameView.setText(eventName);
             eventNameView.setTextColor(Color.BLACK);
@@ -112,13 +112,13 @@ public class EventBox extends AppCompatActivity {
             locationView.setText(location);
             dateAndTimeView.setText(dateTime);
             organizationView.setText(organization);
-            register.setText(buttonText);
+            //register.setText(buttonText);
 
             parent.addView(eventNameView);
             parent.addView(locationView);
             parent.addView(dateAndTimeView);
             parent.addView(organizationView);
-            parent.addView(register);
+            //parent.addView(register);
 
             LinearLayout layout = (LinearLayout) findViewById(R.id.eventboxlayout);
             layout.addView(parent);
@@ -140,7 +140,6 @@ public class EventBox extends AppCompatActivity {
     public double[] getLongitudeList() {
         return longitudeList;
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.common_menu_guest, menu);
@@ -156,21 +155,21 @@ public class EventBox extends AppCompatActivity {
             finish();
             overridePendingTransition(0, 0);
         } else if (id == R.id.menu_alphabetical) {
-            Intent intent = new Intent(EventBox.this, EventAlphabetical.class);
+            Intent intent = new Intent(EventGuest.this, EventAlphabeticalGuest.class);
             startActivity(intent);
 
         } else if (id == R.id.menu_date) {
-            Intent intent = new Intent(EventBox.this, EventDate.class);
+            Intent intent = new Intent(EventGuest.this, EventDateGuest.class);
             startActivity(intent);
 
         }else if (id == R.id.menu_distance) {
-            Intent intent = new Intent(EventBox.this, EventDistance.class);
+            Intent intent = new Intent(EventGuest.this, EventDistanceGuest.class);
             startActivity(intent);
         }  else if (id == R.id.menu_cost) {
-            Intent intent = new Intent(EventBox.this, EventCost.class);
+            Intent intent = new Intent(EventGuest.this, EventCostGuest.class);
             startActivity(intent);
         } else {
-            Toast.makeText(EventBox.this, "Something went wrong", Toast.LENGTH_LONG).show();
+            Toast.makeText(EventGuest.this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }

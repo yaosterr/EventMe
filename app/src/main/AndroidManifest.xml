@@ -17,10 +17,41 @@
         android:theme="@style/Theme.EventMe"
         android:usesCleartextTraffic="true"
         tools:targetApi="30">
+        <activity
+            android:name=".EventCost"
+            android:exported="false" />
+        <activity
+            android:name=".EventDistance"
+            android:exported="false" />
+        <activity
+            android:name=".EventDate"
+            android:exported="false" />
+        <activity
+            android:name=".EventAlphabetical"
+            android:exported="false" />
+        <activity
+            android:name=".EventDateGuest"
+            android:exported="false" />
+        <activity
+            android:name=".EventCostGuest"
+            android:exported="false" />
+        <activity
+            android:name=".EventDistanceGuest"
+            android:exported="false" />
+        <activity
+            android:name=".EventAlphabeticalGuest"
+            android:exported="false" />
+        <activity
+            android:name=".EventGuest"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalVoice"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC1dNGmu9mLCkkJi5oWtjMU2j1C3FwEBxc">
-        </meta-data>
+            android:value="AIzaSyC1dNGmu9mLCkkJi5oWtjMU2j1C3FwEBxc" />
+
         <activity
             android:name=".UserProfile"
             android:exported="false" />
@@ -32,7 +63,7 @@
             android:exported="false" />
         <activity
             android:name=".EventBox"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Map"
             android:exported="false" />
