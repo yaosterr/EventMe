@@ -76,13 +76,11 @@ public class RegisterActivityTest {
     }
 
     @Test
-    public void emailDoesNotHaveAt() {
-        assertFalse(isValidRegistration("Kenny", "kgvelasqgmail.com", "07/23/2003", "password", "password"));
-    }
-
-    @Test
     public void emailIsNotComplete() {
+        assertFalse(isValidRegistration("Kenny", "kgvelasqgmail.com", "07/23/2003", "password", "password"));
         assertFalse(isValidRegistration("Kenny", "kgvelasq@", "07/23/2003", "password", "password"));
+        assertFalse(isValidRegistration("Kenny", "@", "07/23/2003", "password", "password"));
+        assertFalse(isValidRegistration("Kenny", "@gmail.com", "07/23/2003", "password", "password"));
     }
 
     @Test

@@ -51,17 +51,27 @@ public class LoginTest {
     }
 
     @Test
-    public void emailDoesNotHaveDotCom() {
+    public void emailDoesNotHaveDomainExtension() {
         assertFalse(isValidEmailAndPassword("kgvelasq@gmail", "validpassword"));
     }
 
     @Test
-    public void emailDoesNotHaveAnythingBeforeTheAt() {
+    public void emailDoesNotHaveAUsername() {
         assertFalse(isValidEmailAndPassword("@gmail.com", "isvalidpassword"));
     }
 
     @Test
-    public void emailDoesNotHaveAnythingAfterTheAt() {
+    public void emailDoesNotHaveADomain() {
         assertFalse(isValidEmailAndPassword("aristousc@", "anotherpassword"));
+    }
+
+    @Test
+    public void emailCanHaveOtherDomainExtension() {
+        assertTrue(isValidEmailAndPassword("kgvelasq@gmail.net", "password123"));
+        assertTrue(isValidEmailAndPassword("kgvelasq@gmail.org", "password123"));
+        assertTrue(isValidEmailAndPassword("kgvelasq@gmail.com", "password123"));
+        assertTrue(isValidEmailAndPassword("kgvelasq@gmail.gov", "password123"));
+        assertTrue(isValidEmailAndPassword("kgvelasq@gmail.mil", "password123"));
+        assertTrue(isValidEmailAndPassword("kgvelasq@gmail.edu", "password123"));
     }
 }
