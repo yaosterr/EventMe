@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="30">
         <activity
+            android:name=".UpdateProfile"
+            android:exported="false" />
+        <activity
             android:name=".EventCost"
             android:exported="false" />
         <activity

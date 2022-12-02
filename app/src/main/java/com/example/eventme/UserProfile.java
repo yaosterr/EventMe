@@ -127,6 +127,9 @@ public class UserProfile extends AppCompatActivity {
             startActivity(getIntent());
             finish();
             overridePendingTransition(0, 0);
+        } else if (id == R.id.menu_update_profile) {
+            Intent intent = new Intent (UserProfile.this, UpdateProfile.class);
+            startActivity(intent);
         } else if (id == R.id.menu_map_view) {
             Intent intent = new Intent(UserProfile.this, Map.class);
             startActivity(intent);

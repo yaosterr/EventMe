@@ -9,6 +9,9 @@
         android:id="@+id/menu_refresh"
         app:showAsAction="ifRoom" />
 
+    <item android:title="Update Profile"
+        android:id="@+id/menu_update_profile"/>
+
     <item android:title="Map View"
         android:id="@+id/menu_map_view"/>
 
