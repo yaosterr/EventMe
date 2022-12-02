@@ -6,8 +6,11 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
@@ -24,6 +27,7 @@ import androidx.test.filters.LargeTest;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,67 +43,68 @@ public class NonMatchingPasswordTest {
     @Test
     public void nonMatchingPasswordTest() {
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.button_register), withText("Register"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                3)));
-        materialButton.perform(scrollTo(), click());
-
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.editText_register_full_name),
+                allOf(withId(R.id.button_login), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 2)));
-        appCompatEditText.perform(scrollTo(), replaceText("Don"), closeSoftKeyboard());
+        materialButton.perform(scrollTo(), click());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.editText_login_email),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                2)));
+        appCompatEditText.perform(scrollTo(), replaceText("emyao@usc.edu"), closeSoftKeyboard());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.editText_register_email),
+                allOf(withId(R.id.editText_login_pwd),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 4)));
-        appCompatEditText2.perform(scrollTo(), replaceText("don@gmail.com"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.editText_register_dob),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                6)));
-        appCompatEditText3.perform(scrollTo(), replaceText("01/01/2018"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editText_register_password),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                8)));
-        appCompatEditText4.perform(scrollTo(), replaceText("1"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.editText_register_confirm_password),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                10)));
-        appCompatEditText5.perform(scrollTo(), replaceText("123455"), closeSoftKeyboard());
-
+        appCompatEditText2.perform(scrollTo(), replaceText("12345"), closeSoftKeyboard());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.button_register), withText("Register"),
+                allOf(withId(R.id.button_login), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
-                                11)));
+                                5)));
         materialButton2.perform(scrollTo(), click());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.textView_login_head), withText("Please enter your email and password to login"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
+                        isDisplayed()));
+        textView.check(matches(withText("Please enter your email and password to login")));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private static Matcher<View> childAtPosition(

@@ -40,12 +40,6 @@ public class RegisteringTest {
 
     @Test
     public void registeringTest() {
-        ViewInteraction button = onView(
-                allOf(withId(R.id.button_register), withText("REGISTER"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        button.check(matches(isDisplayed()));
-
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.button_register), withText("Register"),
                         childAtPosition(
@@ -54,42 +48,22 @@ public class RegisteringTest {
                                         0),
                                 3)));
         materialButton.perform(scrollTo(), click());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView_register_full_name), withText("Full Name*"),
+                allOf(withId(R.id.textView_register_head), withText("Please enter your details to register"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
                         isDisplayed()));
-        textView.check(matches(withText("Full Name*")));
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.textView_register_email), withText("Email*"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        textView2.check(matches(withText("Email*")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.textView_register_dob), withText("Date of Birth (mm/dd/yyyy)*"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        textView3.check(matches(withText("Date of Birth (mm/dd/yyyy)*")));
-
-        ViewInteraction textView4 = onView(
-                allOf(withId(R.id.textView_register_password), withText("Password*"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        textView4.check(matches(withText("Password*")));
-
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.textView_register_confirm_password), withText("Confirm Password*"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        textView5.check(matches(withText("Confirm Password*")));
-
-        ViewInteraction button2 = onView(
-                allOf(withId(R.id.button_register), withText("REGISTER"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        button2.check(matches(isDisplayed()));
+        textView.check(matches(withText("Please enter your details to register")));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private static Matcher<View> childAtPosition(

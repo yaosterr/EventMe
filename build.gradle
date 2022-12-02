@@ -7,12 +7,15 @@ buildscript{
         mavenCentral()  // Maven Central repository
 
     }
+
     dependencies {
         // Add the dependency for the Google services Gradle plugin
         classpath 'com.google.gms:google-services:4.3.14'
 
+//        testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
     }
 }
+
 
 plugins {
     id 'com.android.application' version '7.2.2' apply false
