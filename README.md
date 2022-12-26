@@ -1,5 +1,9 @@
 # EventMe
 
+<img width="404" alt="Screen Shot 2022-12-25 at 5 37 47 PM" src="https://user-images.githubusercontent.com/75434500/209488752-f5e797fb-2946-4990-8631-0fd0ae7d1c3b.png">
+
+
+
 Notes:
 - please launch our APP with a Pixel 5 Emulator running R (api 30) for the full functionality of our APP
 
